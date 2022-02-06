@@ -14,10 +14,6 @@ class BaseScreen {
 
     // region | Action Methods -----------------------------------------------------------------------------------------
 
-    async loadPage() {
-        await this.driver.get(this.url);
-    }
-
     async click(matcher) {
         await this.driver.findElement(matcher).click();
     }

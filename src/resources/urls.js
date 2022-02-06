@@ -1,4 +1,5 @@
 exports.Urls = {
 
-    home: "https://en.wikipedia.org/wiki/Main_Page"
+    ARTICLE_BASE: "https://en.wikipedia.org/wiki/",
+    HOME: "Main_Page",
 };

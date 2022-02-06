@@ -1,11 +1,12 @@
 const BaseScreen = require("./base/baseScreen");
 const {Urls} = require("../resources/urls");
 const {By} = require("selenium-webdriver");
+const {Url} = require("../utils/url");
 
 class Home extends BaseScreen {
 
     constructor(driver) {
-        super(driver, Urls.home);
+        super(driver, Url().withDriver(driver).buildArticle(Urls.HOME));
         this.searchMatcher = By.name("search");
         this.title = "Wikipedia";
     }
