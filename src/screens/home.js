@@ -14,8 +14,8 @@ class Home extends BaseScreen {
         await this.click(this.searchMatcher)
     }
 
-    async searchForArticle() {
-        await this.submitText(this.searchMatcher, "Javascript")
+    async searchForArticle(title) {
+        await this.submitText(this.searchMatcher, title)
     }
 
     async waitForDisplay() {
