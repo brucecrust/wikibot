@@ -1,5 +1,5 @@
 const {Integers} = require("../../resources/integers");
-const {until} = require("selenium-webdriver")
+const {until, Key} = require("selenium-webdriver")
 
 class BaseScreen {
 
@@ -18,12 +18,20 @@ class BaseScreen {
         await this.driver.get(this.url);
     }
 
+    async click(matcher) {
+        await this.driver.findElement(matcher).click();
+    }
+
+    async fetchArticleUrl() {
+        return this.driver.getCurrentUrl();
+    }
+
     async typeText(matcher, text) {
-        this.driver.findElement(matcher).sendKeys(text);
+        await this.driver.findElement(matcher).sendKeys(text);
     }
 
     async submitText(matcher, text) {
-        this.driver.findElement(matcher).sendKeys(text);
+        await this.driver.findElement(matcher).sendKeys(text, Key.RETURN);
     }
 
     // endregion
@@ -35,7 +43,7 @@ class BaseScreen {
     // region | Wait Methods -------------------------------------------------------------------------------------------
 
     async waitForTitle(title) {
-        this.driver.wait(until.titleIs(title), Integers.WAIT)
+        await this.driver.wait(until.titleContains(title), Integers.WAIT)
     }
 
     //endregion

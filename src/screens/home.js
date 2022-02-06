@@ -7,15 +7,19 @@ class Home extends BaseScreen {
     constructor(driver) {
         super(driver, Urls.home);
         this.searchMatcher = By.name("search");
-        this.title = "Wikipedia, the free encyclopedia";
+        this.title = "Wikipedia";
     }
 
-    searchForArticle() {
-        this.submitText(this.searchMatcher, "")
+    async clickSearchInput() {
+        await this.click(this.searchMatcher)
     }
 
-    waitForDisplay() {
-        this.waitForTitle(this.title)
+    async searchForArticle() {
+        await this.submitText(this.searchMatcher, "Javascript")
+    }
+
+    async waitForDisplay() {
+        await this.waitForTitle(this.title)
     }
 }
 
