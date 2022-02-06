@@ -7,6 +7,10 @@ class Article extends BaseScreen {
         this.title = title
     }
 
+    async verifyUrl() {
+        return this.confirmUrl(this.url);
+    }
+
     async waitForDisplay() {
         await this.waitForTitle(this.title)
     }

@@ -12,10 +12,20 @@ exports.TestHome = {
             await home.clickSearchInput();
             await home.searchForArticle(javascriptArticleTitle);
             await home.waitForTitle(javascriptArticleTitle);
-            const url = home.fetchArticleUrl().then(r => console.log(`URL: ${r}`));
+            const url = await home.fetchArticleUrl();
 
             let javascriptArticle = new Article(driver, url, javascriptArticleTitle);
             await javascriptArticle.waitForDisplay()
+            await javascriptArticle.verifyUrl().then(r => {
+                console.log(r)
+            });
+            if (!await javascriptArticle.verifyUrl()) {
+                javascriptArticle.fetchArticleUrl().then(r =>
+                    console.log(`${r} == ? ${javascriptArticle.url} : ${r === javascriptArticle.url}`)
+                );
+                throw `Incorrect URL!`;
+            }
+
 
         } catch (e) {
             console.log(`Oh no! Exception: ${e}`);

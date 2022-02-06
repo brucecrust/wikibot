@@ -23,7 +23,7 @@ class BaseScreen {
     }
 
     async fetchArticleUrl() {
-        return this.driver.getCurrentUrl();
+        return await this.driver.getCurrentUrl();
     }
 
     async typeText(matcher, text) {
@@ -47,6 +47,11 @@ class BaseScreen {
     }
 
     //endregion
+
+    async confirmUrl(url) {
+        const currentUrl = await this.driver.getCurrentUrl();
+        return currentUrl === url;
+    }
 }
 
 module.exports = BaseScreen;
