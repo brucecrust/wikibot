@@ -3,8 +3,8 @@ const {Urls} = require("../resources/urls");
 
 class Home extends BaseScreen {
 
-    constructor() {
-        super(Urls.home);
+    constructor(driver) {
+        super(driver, Urls.home);
     }
 }
 

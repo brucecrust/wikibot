@@ -1,4 +1,13 @@
 const {Builder} = require("selenium-webdriver");
-exports.driver = new Builder()
-    .forBrowser("chrome")
-    .build();
+
+const Driver = {
+    init: async () => {
+        const driver = await new Builder()
+            .forBrowser("chrome")
+            .build();
+
+        return driver;
+    }
+}
+
+module.exports.Driver = Driver

@@ -1,10 +1,9 @@
-const {driver} = require("../../tests/baseTest");
-
 class BaseScreen {
 
     // region | Constructor --------------------------------------------------------------------------------------------
 
-    constructor(url) {
+    constructor(driver, url) {
+        this.driver = driver;
         this.url = url;
     }
 
@@ -13,15 +12,15 @@ class BaseScreen {
     // region | Action Methods -----------------------------------------------------------------------------------------
 
     async loadPage() {
-        await driver.get(this.url);
+        await this.driver.get(this.url);
     }
 
     async typeText(matcher, text) {
-        driver.findElement(matcher).sendKeys(text);
+        this.driver.findElement(matcher).sendKeys(text);
     }
 
     async submitText(matcher, text) {
-        driver.findElement(matcher).sendKeys(text);
+        this.driver.findElement(matcher).sendKeys(text);
     }
 
     // endregion
