@@ -8,7 +8,7 @@ class Article extends BaseScreen {
     }
 
     async verifyUrl() {
-        return this.confirmUrl(this.url);
+        return this.confirmUrl(this.url.asString());
     }
 
     async waitForDisplay() {

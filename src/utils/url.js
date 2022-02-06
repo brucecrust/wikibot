@@ -1,37 +1,29 @@
 const {Urls} = require("../resources/urls")
 
-const Url = (driver, url) => {
-    this.driver = driver
-    this.url = url
+class Url {
 
-    return {
-        asString: () => {
-            return this.url;
-        },
+    constructor(driver) {
+        this.driver = driver;
+        this.url = Urls.ARTICLE_BASE;
+    }
 
-        asUrl: () => {
-            return this;
-        },
+    asArticle = () => {
+        return this;
+    }
 
-        go: () => {
-            this.driver.get(this.url);
-        }
+    asString = () => {
+        return this.url;
+    }
+
+    buildArticle = (articleTitle) => {
+        this.url += articleTitle;
+        return this;
+    }
+
+    load = () => {
+        this.driver.get(this.url);
+        return this;
     }
 }
 
-exports.Url = () => {
-    let driver = null;
-    let url = Urls.ARTICLE_BASE;
-
-    return {
-        withDriver: (driver) => {
-            this.driver = driver
-            return this;
-        },
-
-        buildArticle: (articleTitle) => {
-            this.url += articleTitle;
-            return new Url(driver, url);
-        }
-    }
-}
+module.exports = Url;

@@ -8,6 +8,7 @@ class BaseScreen {
     constructor(driver, url) {
         this.driver = driver;
         this.url = url;
+        this.articleName = "";
     }
 
     // endregion
@@ -51,6 +52,11 @@ class BaseScreen {
 
     urlContains(text) {
         return this.url.includes(text)
+    }
+
+    withUrl = (url) => {
+        this.url = url
+        return this;
     }
 }
 
