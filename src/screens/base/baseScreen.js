@@ -52,6 +52,10 @@ class BaseScreen {
         const currentUrl = await this.driver.getCurrentUrl();
         return currentUrl === url;
     }
+
+    urlContains(text) {
+        return this.url.includes(text)
+    }
 }
 
 module.exports = BaseScreen;

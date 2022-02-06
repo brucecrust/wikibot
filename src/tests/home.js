@@ -15,6 +15,11 @@ exports.TestHome = {
             const url = await home.fetchArticleUrl();
 
             let javascriptArticle = new Article(driver, url, javascriptArticleTitle);
+
+            if (javascriptArticle.urlContains("search")) {
+                throw "You're at the wrong place!"
+            }
+
             await javascriptArticle.waitForDisplay()
             await javascriptArticle.verifyUrl().then(r => {
                 console.log(r)
