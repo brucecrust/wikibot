@@ -1,3 +1,3 @@
-const Integers = {
-    wait: 5000
-}
+exports.Integers = {
+    WAIT: 5000
+};

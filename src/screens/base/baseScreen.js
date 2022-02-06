@@ -1,3 +1,6 @@
+const {Integers} = require("../../resources/integers");
+const {until} = require("selenium-webdriver")
+
 class BaseScreen {
 
     // region | Constructor --------------------------------------------------------------------------------------------
@@ -30,6 +33,10 @@ class BaseScreen {
     // endregion
 
     // region | Wait Methods -------------------------------------------------------------------------------------------
+
+    async waitForTitle(title) {
+        this.driver.wait(until.titleIs(title), Integers.WAIT)
+    }
 
     //endregion
 }

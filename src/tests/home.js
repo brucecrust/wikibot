@@ -6,6 +6,8 @@ exports.TestHome = {
 
         try {
             await home.loadPage();
+            await home.waitForDisplay()
+            await home.searchForArticle()
         } finally {
             await driver.quit();
         }
