@@ -14,14 +14,8 @@ exports.TestHome = {
             await home.waitForDisplay();
             await home.clickSearchInput();
 
-            /*
-            await home.searchForArticle(javascriptArticleTitle);
-            await home.waitForTitle(javascriptArticleTitle);
-             */
-
             let javascriptArticle = new Article(driver, new
-                Url(driver).buildArticle(javascriptArticleTitle),
-                javascriptArticleTitle);
+                Url(driver).buildArticle(javascriptArticleTitle));
 
             await javascriptArticle.url.load();
             await javascriptArticle.waitForDisplay();

@@ -2,9 +2,8 @@ const BaseScreen = require("./base/baseScreen")
 
 class Article extends BaseScreen {
 
-    constructor(driver, url, title) {
+    constructor(driver, url) {
         super(driver, url);
-        this.title = title
     }
 
     async verifyUrl() {
@@ -12,7 +11,7 @@ class Article extends BaseScreen {
     }
 
     async waitForDisplay() {
-        await this.waitForTitle(this.title)
+        await this.waitForTitle(this.articleName)
     }
 }
 
